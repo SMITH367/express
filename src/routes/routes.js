@@ -3,7 +3,7 @@ const router = express.Router()
 
 
 router.post('/test', async (req, res) => {
-    console.log(req.body)
+    console.log(req)
     res.sendStatus(200)
 })
 
