@@ -17,7 +17,7 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
 
     if (req.query != null) {
 
-        if (req.query.response === "Rechazada") {
+        if (req.query.x_response === "Rechazada") {
             const userEmail = req.query.x_customer_email
             const amount = req.query.x_amount
 
@@ -47,7 +47,6 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
             }
 
         }
-
     }
 
 })
