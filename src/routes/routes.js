@@ -23,7 +23,7 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
 
             try {
 
-                const deliveryManValidateExist = deliveryMan.findOne({
+                const deliveryManValidateExist = await deliveryMan.findOne({
                     email: userEmail
                 })
 
