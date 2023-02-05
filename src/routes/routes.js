@@ -21,6 +21,7 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
             const userEmail = req.query.x_customer_email
             const amount = req.query.x_amount
 
+
             try {
 
                 const deliveryManValidateExist = await deliveryMan.findOne({
@@ -31,17 +32,16 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
 
                     console.log(deliveryManValidateExist, userEmail, amount)
 
-                    const newBalance = amount += deliveryManValidateExist.balance;
+                    let newBalance = amount + deliveryManValidateExist.balance
+                    console.log(newBalance)
 
-                    console.log(newBalance, deliveryManValidateExist.balance, amount)
-
-                    const updateState = await deliveryMan.updateOne({
-                        email: userEmail
-                    }, {
-                        $set: {
-                            balance: newBalance
-                        }
-                    })
+                    // const updateState = await deliveryMan.updateOne({
+                    //     email: userEmail
+                    // }, {
+                    //     $set: {
+                    //         balance: newBalance
+                    //     }
+                    // })
 
                     console.log(updateState)
 
