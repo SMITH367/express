@@ -33,6 +33,8 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
 
                     const newBalance = amount += deliveryManValidateExist.balance;
 
+                    console.log(newBalance, deliveryManValidateExist.balance, amount)
+
                     const updateState = await deliveryMan.updateOne({
                         email: userEmail
                     }, {
@@ -40,6 +42,8 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
                             balance: newBalance
                         }
                     })
+
+                    console.log(updateState)
 
                     res.sendStatus(200)
 
