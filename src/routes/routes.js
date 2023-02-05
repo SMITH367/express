@@ -18,7 +18,7 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
     if (req.query != null) {
 
         if (req.query.x_response === "Rechazada") {
-            const userEmail = req.query.x_customer_email
+            const userEmail = req.query.x_customer_email.toString()
             const amount = req.query.x_amount
 
             try {
