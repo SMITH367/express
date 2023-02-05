@@ -43,7 +43,7 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
                     //     }
                     // })
 
-                    console.log(updateState)
+                    // console.log(updateState)
 
                     res.sendStatus(200)
 
