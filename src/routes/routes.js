@@ -27,21 +27,26 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
                     email: userEmail
                 })
 
+                if (deliveryManValidateExist !== null) {
 
-                console.log(deliveryManValidateExist, userEmail, amount)
+                    console.log(deliveryManValidateExist, userEmail, amount)
 
-                const payEmail = "Hola";
-                const newBalance = 2;
+                    const newBalance = amount + deliveryManValidateExist.balance;
 
-                // const updateState = await deliveryMan.updateOne({
-                //     email: payEmail,
-                // }, {
-                //     $set: {
-                //         balance: newBalance
-                //     }
-                // })
+                    const updateState = await deliveryMan.updateOne({
+                        email: userEmail
+                    }, {
+                        $set: {
+                            balance: newBalance
+                        }
+                    })
 
-                res.send(200)
+                    res.sendStatus(200)
+
+                } else {
+                    res.sendStatus(406)
+                }
+
             } catch (err) {
                 res.sendStatus(403)
             }
