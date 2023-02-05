@@ -14,24 +14,40 @@ router.post('/test', async (req, res) => {
 
 router.post('/deliveryMan/payment/recharge', async (req, res) => {
 
-    console.log(req.query)
 
-    try {
+    if (req.query != null) {
 
-        const payEmail = "Hola";
-        const newBalance = 2;
+        if (req.query.response === "Aprobada") {
+            const userEmail = req.query.x_customer_email
+            const amount = req.query.x_amount
 
-        const updateState = await deliveryMan.updateOne({
-            email: payEmail,
-        }, {
-            $set: {
-                balance: newBalance
+            try {
+
+                const deliveryManValidateExist = deliveryMan.findOne({
+                    email: userEmail
+                })
+
+
+                console.log(deliveryManValidateExist, userEmail, amount)
+
+                const payEmail = "Hola";
+                const newBalance = 2;
+
+                // const updateState = await deliveryMan.updateOne({
+                //     email: payEmail,
+                // }, {
+                //     $set: {
+                //         balance: newBalance
+                //     }
+                // })
+
+                res.send(updateState.acknowledged)
+            } catch (err) {
+                res.sendStatus(403)
             }
-        })
 
-        res.send(updateState.acknowledged)
-    } catch (err) {
-        res.sendStatus(403)
+        }
+
     }
 
 })
