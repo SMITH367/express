@@ -18,7 +18,7 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
     if (req.query != null) {
 
         if (req.query.x_response === "Rechazada") {
-            const userEmail = req.query.x_customer_email.toString()
+            const userEmail = req.query.x_customer_email
             const amount = req.query.x_amount
 
             try {
@@ -41,7 +41,7 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
                 //     }
                 // })
 
-                res.send(updateState.acknowledged)
+                res.send(200)
             } catch (err) {
                 res.sendStatus(403)
             }
