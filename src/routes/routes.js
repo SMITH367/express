@@ -19,18 +19,17 @@ router.post('/transcaribe/recarga/:numeroTarj/:saldo', async (req, res) => {
         numTarjeta: req.params.numeroTarj
     })
 
+    console.log(getTarjeta)
     if (getTarjeta !== null) {
         if (req.params.numeroTarj == getTarjeta.numTarjeta) {
 
-         
+            
             const newSaldo = getTarjeta.saldo + parseInt(req.params.saldo)
+            
             const recarga = await transcaribe.updateOne({
-                numeroTarj: req.params.numeroTarj
-            }, {
-                $set: {
-                    saldo: newSaldo
-                }
-            })
+                numTarjeta: req.params.numeroTarj
+            }, {saldo:newSaldo})
+          
 
             if(recarga!== null){
                 res.send({
