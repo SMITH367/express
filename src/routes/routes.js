@@ -108,6 +108,8 @@ router.post('/deliveryMan/payment/recharge', async (req, res) => {
                 res.sendStatus(403)
             }
 
+        } else {
+            console.log(req.query.x_response)
         }
     }
 
